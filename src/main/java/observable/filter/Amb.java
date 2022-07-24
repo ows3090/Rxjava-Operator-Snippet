@@ -5,6 +5,8 @@ import io.reactivex.rxjava3.core.Observable;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+// 1     2      3      4      5
+//    a    b c  d
 public class Amb {
     public static void main(String[] args) {
         ArrayList<Observable<Integer>> list = new ArrayList();
