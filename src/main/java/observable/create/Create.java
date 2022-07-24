@@ -1,4 +1,4 @@
-package observable;
+package observable.create;
 
 import io.reactivex.rxjava3.core.Observable;
 
