@@ -1,6 +1,10 @@
 package observable.create;
 
+import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.core.Emitter;
 import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Observer;
+import io.reactivex.rxjava3.disposables.Disposable;
 
 public class Create {
     public static void main(String[] args) {
@@ -11,6 +15,26 @@ public class Create {
             emitter.onComplete();
         });
 
-        source.subscribe(System.out::println, throwable -> System.out.println("Error"));
+        source.subscribe(new Observer() {
+            @Override
+            public void onSubscribe(@NonNull Disposable d) {
+                System.out.println("onSubscribe");
+            }
+
+            @Override
+            public void onNext(Object o) {
+                System.out.println("onNext");
+            }
+
+            @Override
+            public void onError(@NonNull Throwable e) {
+                System.out.println("onError");
+            }
+
+            @Override
+            public void onComplete() {
+                System.out.println("onComplete");
+            }
+        });
     }
 }
